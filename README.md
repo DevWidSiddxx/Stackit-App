@@ -5,6 +5,8 @@
 
 StackIt is a modern, professional Q&A platform inspired by Stack Overflow, designed for developers to ask questions, share answers, and collaborate. This project was built for the Odoo Hackathon and focuses on a clean, responsive frontend user experience.
 
+https://stackit-ashen.vercel.app/
+
 ## Features 🚀
 
 - **Ask and Answer Questions:** Users can post questions, provide answers, and interact with the community.
