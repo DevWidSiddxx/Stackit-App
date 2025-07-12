@@ -1,11 +1,11 @@
 # Stackit-App 🚀
-# StackIt – Professional Q&A Platform 🚀
+# StackIt – Professional Q&A Platform 
 
 ## Overview
 
 StackIt is a modern, professional Q&A platform inspired by Stack Overflow, designed for developers to ask questions, share answers, and collaborate. This project was built for the Odoo Hackathon and focuses on a clean, responsive frontend user experience.
 
-## Features
+## Features 🚀
 
 - **Ask and Answer Questions:** Users can post questions, provide answers, and interact with the community.
 - **Tagging System:** Organize questions by relevant tags for easy discovery.
