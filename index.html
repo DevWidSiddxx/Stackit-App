@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StackIt - Professional Q&A Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="javascript:void(0)" class="logo" onclick="showQuestions()">StackIt</a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="javascript:void(0)" onclick="showQuestions()">Questions</a></li>
+                        <li><a href="javascript:void(0)" onclick="showTagsPage()">Tags</a></li>
+                        <li><a href="javascript:void(0)" onclick="showUsersPage()">Users</a></li>
+                        <li><a href="javascript:void(0)" onclick="showJobsPage()">Jobs</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <button class="btn btn-primary" onclick="showAskForm()">Ask Question</button>
+                    <button class="btn btn-secondary" onclick="showLogin()">Login</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <main>
+                <!-- Search Section -->
+                <div class="search-section">
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="Search questions..." id="searchInput">
+                        <button class="btn btn-primary" onclick="searchQuestions()">Search</button>
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filterQuestions('all')">All Questions</button>
+                        <button class="filter-btn" onclick="filterQuestions('unanswered')">Unanswered</button>
+                        <button class="filter-btn" onclick="filterQuestions('newest')">Newest</button>
+                        <button class="filter-btn" onclick="filterQuestions('most-votes')">Most Votes</button>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div class="loading" id="loadingState">
+                    <div class="spinner"></div>
+                    <p>Loading questions...</p>
+                </div>
+
+                <!-- Question List -->
+                <div class="content-area" id="questionList">
+                    <div class="question-list" id="questionsContainer">
+                        <!-- Questions will be populated by JavaScript -->
+                    </div>
+                    <div class="pagination">
+                        <button class="page-btn" onclick="changePage(1)">1</button>
+                        <button class="page-btn active" onclick="changePage(2)">2</button>
+                        <button class="page-btn" onclick="changePage(3)">3</button>
+                        <button class="page-btn" onclick="changePage(4)">4</button>
+                        <button class="page-btn" onclick="changePage(5)">5</button>
+                    </div>
+                </div>
+
+                <!-- Ask Question Form -->
+                <div class="ask-form" id="askForm">
+                    <h2>Ask a Question</h2>
+                    <form onsubmit="submitQuestion(event)">
+                        <div class="form-group">
+                            <label for="questionTitle">Title</label>
+                            <input type="text" id="questionTitle" required placeholder="What's your programming question?">
+                        </div>
+                        <div class="form-group">
+                            <label for="questionDescription">Description</label>
+                            <textarea id="questionDescription" required placeholder="Provide details about your question..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="questionTags">Tags</label>
+                            <input type="text" id="questionTags" placeholder="javascript, react, nodejs (comma separated)">
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="hideAskForm()">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Submit Question</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Question Detail View -->
+                <div class="question-detail" id="questionDetail">
+                    <div class="question-content">
+                        <h2 id="detailTitle"></h2>
+                        <div class="question-meta">
+                            <span id="detailAuthor"></span> • <span id="detailDate"></span>
+                        </div>
+                        <div class="question-stats">
+                            <div class="stat-item">
+                                <span>👍</span>
+                                <span id="detailVotes"></span>
+                            </div>
+                            <div class="stat-item">
+                                <span>💬</span>
+                                <span id="detailAnswers"></span>
+                            </div>
+                            <div class="stat-item">
+                                <span>👁️</span>
+                                <span id="detailViews"></span>
+                            </div>
+                        </div>
+                        <p id="detailDescription"></p>
+                        <div class="question-tags" id="detailTags"></div>
+                    </div>
+                    <div class="answers-section">
+                        <h3>Answers</h3>
+                        <div id="answersContainer"></div>
+                        <div class="answer-form">
+                            <h4>Your Answer</h4>
+                            <form onsubmit="submitAnswer(event)">
+                                <div class="form-group">
+                                    <textarea id="answerText" required placeholder="Write your answer here..."></textarea>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-primary">Post Answer</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="backToQuestions()" style="margin-top: 2rem;">← Back to Questions</button>
+                </div>
+            </main>
+
+            <aside class="sidebar">
+                <h3>Popular Tags</h3>
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="filterByTag('javascript')">JavaScript</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByTag('react')">React</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByTag('nodejs')">Node.js</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByTag('python')">Python</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByTag('html')">HTML</a></li>
+                    <li><a href="javascript:void(0)" onclick="filterByTag('css')">CSS</a></li>
+                </ul>
+                <h3 style="margin-top: 2rem;">Recent Activity</h3>
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="showActivity('answer')">New answer posted</a></li>
+                    <li><a href="javascript:void(0)" onclick="showActivity('update')">Question updated</a></li>
+                    <li><a href="javascript:void(0)" onclick="showActivity('user')">New user joined</a></li>
+                    <li><a href="javascript:void(0)" onclick="showActivity('comment')">Comment added</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+    <script src="frontend.js"></script>
+</body>
+</html>
