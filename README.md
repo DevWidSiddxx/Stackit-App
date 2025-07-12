@@ -1,5 +1,5 @@
-# Stackit-App
-# StackIt – Professional Q&A Platform
+# Stackit-App 🚀
+# StackIt – Professional Q&A Platform 🚀
 
 ## Overview
 
