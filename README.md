@@ -61,7 +61,7 @@ In future versions, we plan to:
 
 ## Contributing
 
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+Unfortunately we were not able to finish the backend integrations alone within the stiuplated time and we had plans of integrated Gen-AI bot as well but due to some time constraints we were not able to do it.If  
 
 ## License
 
